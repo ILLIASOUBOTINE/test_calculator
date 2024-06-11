@@ -43,7 +43,7 @@ public class Calculator {
             case '/' -> devisOperation(a, b);
             case '+' -> addOperation(a, b);
             case '-' -> subtrOperation(a, b);
-            default -> 0;
+            default ->throw new Exception("Неправильный оператор");
         };
 
         return  result;
@@ -84,7 +84,7 @@ public class Calculator {
         return resultStr;
     }
 
-    public static int romanToArabic(String str)  {
+    public static int romanToArabic(String str) throws Exception {
         int resultNum = 0;
 
         RomanNum[] romanNumerals = RomanNum.values();
@@ -94,6 +94,10 @@ public class Calculator {
                resultNum = romanNum.getValue();
                 break;
             }
+        }
+
+        if (resultNum == 0) {
+            throw new Exception("Неправильное римское число");
         }
         return resultNum;
     }
